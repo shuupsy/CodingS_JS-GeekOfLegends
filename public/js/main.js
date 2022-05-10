@@ -39,5 +39,26 @@ class Hero{
         this.hp *= 0.75;
     }
 }
-let guerrier = new Hero ("Guerrier", 400, 50,0)
-let mage = new Hero ("Mage", 200, 150)
+
+class Guerrier extends Hero{
+    constructor(nom, hp, attaque, rage) {
+        super(nom, hp, attaque);
+        this.rage = rage;
+    }
+}
+class Mage extends Hero{
+    constructor(nom, hp, attaque, mana) {
+        super(nom, hp, attaque);
+        this.mana = mana;
+    }
+}
+class Archer extends Hero{
+    constructor(nom, hp, attaque, fleches) {
+        super(nom, hp, attaque);
+        this.fleches = fleches;
+    }
+}
+
+let garen = new Guerrier ("Garen", 400, 50,0)
+let lux = new Mage ("Lux", 200, 150)
+let ashe = new Archer ("Ashe", 300, 100)
