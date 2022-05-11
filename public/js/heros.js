@@ -40,6 +40,7 @@ class Archer extends Hero{
 let garen = new Guerrier ("Garen", 400, 50,0)
 let lux = new Mage ("Lux", 200, 150)
 let ashe = new Archer ("Ashe", 300, 100)
+
 class Hero{
     constructor(nom, hp, attaque) {
         this.nom = nom;
@@ -78,7 +79,3 @@ class Archer extends Hero{
 
     }
 }
-
-let garen = new Guerrier ("Garen", 400, 50,0)
-let lux = new Mage ("Lux", 200, 150)
-let ashe = new Archer ("Ashe", 300, 100)
