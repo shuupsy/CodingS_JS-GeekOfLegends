@@ -12,7 +12,7 @@ class Boss extends Type {
         super(nom, hp, attaque);
     }
     vie() {
-        if (this.hp <= lowLife) {
+        if (this.hp <= 0.2 * this.hp) {
             enigme()
         }
     }
@@ -30,4 +30,4 @@ let bossATuer = boss[Math.floor(Math.random()*boss.length)]
 
 alert(`Le boss à tuer aujourd'hui est ${bossATuer}`)
 
-export {Type, nico, kevin, kadri, boss, bossATuer}
+export {Type, Boss,nico, kevin, kadri, boss, bossATuer}
