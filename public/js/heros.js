@@ -25,18 +25,20 @@ class Guerrier extends Hero {
 }
 
 // Mage
+let nbMana = [7,9,11];
 class Mage extends Hero {
     constructor(nom, hp, atk, mana) {
         super(nom, hp, atk);
-        this.mana = mana;
+        this.mana = nbMana[Math.floor(Math.random()* nbMana.length)];;
     }
 }
 
 // Archer
+let nbFleches = [7,8,9,10,11];
 class Archer extends Hero {
     constructor(nom, hp, atk, fleches) {
         super(nom, hp, atk);
-        this.fleches = fleches;
+        this.fleches = nbFleches[Math.floor(Math.random()* nbFleches.length)];
     }
     nbrefleches() {
 
@@ -100,3 +102,9 @@ while(mage.atk >= r2 || mage.atk < 100) {
 archer.atk = r2 - mage.atk
 
 console.log(`Quelle équipe ! Voici le récap de nos héros : [Guerrier: ${guerrier.nom}, ${guerrier.hp}HP, ${guerrier.atk}ATK], [Mage: ${mage.nom}, ${mage.hp}HP, ${mage.atk}ATK] et [Archer: ${archer.nom}, ${archer.hp}HP, ${archer.atk}ATK]`)
+
+console.log("Quelle équipe! Voici le récap de nos héros :")
+let i=0
+for (i=0; i< heros.length; i++) {
+    console.table(heros[i])
+}
