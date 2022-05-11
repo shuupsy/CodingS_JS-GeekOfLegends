@@ -3,15 +3,15 @@ class Hero {
     constructor(nom, hp, atk) {
         this.nom = nom;
         this.hp = hp;
-        this.attaque = atk;
+        this.atk = atk;
     }
     defendre() {
-        this.attaque *= 0.5;
+        this.atk *= 0.5;
         this.hp *= 2.5;
         // +augmente les chances d'être attaqué par le boss
     };
     attaquer() {
-        this.attaque *= 1.4;
+        this.atk *= 1.4;
         this.hp *= 0.75;
     }
 }
@@ -54,6 +54,8 @@ let guerrier = new Guerrier
 let mage = new Mage
 let archer = new Archer
 
+let heros = [guerrier, mage, archer]
+
 // L'utilisateur doit donner un nom à chaque héros
 guerrier.nom = prompt("Donnez un nom à votre guerrier.")
 mage.nom = prompt("Donnez un nom à votre mage.")
@@ -83,7 +85,7 @@ archer.hp = r - mage.hp
 
 // Distribution ATK
 // Pour le guerrier
-guerrier.atk = +prompt(`ATK pour votre guerrier. Entre un chiffre en 100 et 300.`);
+guerrier.atk = +prompt(`MAINTENANT LES ATK ! Pour votre guerrier. Entre un chiffre en 100 et 300.`);
 while (guerrier.atk < 100 || guerrier.atk > 300) {
     guerrier.atk = +prompt("Attention, vous devez lui donner des HP entre 100 et 300 afin que les autres puissent taffer aussi !")
 } 
@@ -97,4 +99,4 @@ while(mage.atk >= r2 || mage.atk < 100) {
 // Pour l'archer
 archer.atk = r2 - mage.atk
 
-console.log(`Quelle équipe ! Voici le récap de nos héros : ${guerrier}, ${mage}, ${archer}. LE COMBAT PEUT COMMENCER.`)
+console.log(`Quelle équipe ! Voici le récap de nos héros : [Guerrier: ${guerrier.nom}, ${guerrier.hp}HP, ${guerrier.atk}ATK], [Mage: ${mage.nom}, ${mage.hp}HP, ${mage.atk}ATK] et [Archer: ${archer.nom}, ${archer.hp}HP, ${archer.atk}ATK]`)
