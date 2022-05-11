@@ -55,9 +55,9 @@ let mage = new Mage
 let archer = new Archer
 
 // L'utilisateur doit donner un nom à chaque héros
-// guerrier.nom = prompt("Donnez un nom à votre guerrier.")
-// mage.nom = prompt("Donnez un nom à votre mage.")
-// archer.nom = prompt("Donnez un nom à votre archer.")
+guerrier.nom = prompt("Donnez un nom à votre guerrier.")
+mage.nom = prompt("Donnez un nom à votre mage.")
+archer.nom = prompt("Donnez un nom à votre archer.")
 
 console.log(`Je vous présente notre fabuleuse équipe: le Guerrier ${guerrier.nom}, le mage ${mage.nom}, l'archer ${archer.nom}`)
 
