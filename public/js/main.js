@@ -1,1 +1,1 @@
-import * as terreur from './boss'
+import * as terreur from './boss.js'
