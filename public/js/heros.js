@@ -1,3 +1,7 @@
+import {
+    bossATuer
+} from './boss.js'
+
 // Propriétés communs à tous les héros
 class Hero {
     constructor(nom, hp, atk) {
@@ -13,6 +17,10 @@ class Hero {
     attaquer() {
         this.atk *= 1.4;
         this.hp *= 0.75;
+        bossATuer.hp -= this.atk;
+        alert(`Le boss ${bossATuer.name} a perdu ${this.atk}. Il lui reste ${bossATuer.hp}!`)
+        this.atk /= 1.4;
+        this.hp /=0.75
     }
 }
 
@@ -45,16 +53,12 @@ class Archer extends Hero {
     }
 }
 
-import {
-    bossATuer
-} from './boss.js'
-
 console.log(`Mais de l'autre notre côté, nous avons 3 champions tous excités de battre la TERREUR de Molengeek (${bossATuer.nom})`)
 
 // Déclarations héros du jour
-let guerrier = new Guerrier
-let mage = new Mage
-let archer = new Archer
+let guerrier = new Guerrier;
+let mage = new Mage;
+let archer = new Archer;
 
 let heros = [guerrier, mage, archer]
 
@@ -63,7 +67,7 @@ guerrier.nom = prompt("Donnez un nom à votre guerrier.")
 mage.nom = prompt("Donnez un nom à votre mage.")
 archer.nom = prompt("Donnez un nom à votre archer.")
 
-console.log(`Je vous présente notre fabuleuse équipe: le Guerrier ${guerrier.nom}, le mage ${mage.nom}, l'archer ${archer.nom}`)
+console.log(`Je vous présente notre fabuleuse équipe: ${guerrier.nom}, le Guerrier / ${mage.nom}, le Mage / ${archer.nom}, l'Archer.`),
 
 // Distribution des HP et ATK entre chaque héros
 console.log(`Avant de lancer les hostilités, le public doit distribuer ses faveurs à chacun des Héros. Vous avez 500HP et 500ATK à répartir entre chaque Héros. VOTEZ.`)
@@ -101,10 +105,14 @@ while(mage.atk >= r2 || mage.atk < 100) {
 // Pour l'archer
 archer.atk = r2 - mage.atk
 
-console.log(`Quelle équipe ! Voici le récap de nos héros : [Guerrier: ${guerrier.nom}, ${guerrier.hp}HP, ${guerrier.atk}ATK], [Mage: ${mage.nom}, ${mage.hp}HP, ${mage.atk}ATK] et [Archer: ${archer.nom}, ${archer.hp}HP, ${archer.atk}ATK]`)
-
 console.log("Quelle équipe! Voici le récap de nos héros :")
 let i=0
-for (i=0; i< heros.length; i++) {
+for (i; i< heros.length; i++) {
     console.table(heros[i])
 }
+
+console.log("======== !!! C'EST L'HEURE DU COMBAT !!! =========")
+
+
+// Export pour déroulement
+export {guerrier, mage, archer, heros}
