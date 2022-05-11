@@ -75,7 +75,7 @@ let r = 500 - guerrier.hp
 // Pour le mage
 mage.hp = +prompt(`HP pour votre mage. Il vous reste ${r}points à distribuer. (Le reste sera donné automatiquement à l'archer.)`)
 while(mage.hp >= r || mage.hp < 100) {
-    mage.hp = +prompt(`Attention, l'archer doit au moins avoir 100HP. (Il vous reste ${r}points)`)
+    mage.hp = +prompt(`Donnez un chiffre entre 100 et ${r-100}, car l'archer doit au moins avoir 100HP.`)
 }
 // Pour l'archer
 archer.hp = r - mage.hp
