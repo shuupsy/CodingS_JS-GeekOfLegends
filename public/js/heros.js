@@ -1,3 +1,4 @@
+// Propriétés communs à tous les héros
 class Hero{
     constructor(nom, hp, attaque) {
         this.nom = nom;
@@ -15,12 +16,15 @@ class Hero{
     }
 }
 
+// Guerrier
 class Guerrier extends Hero{
     constructor(nom, hp, attaque, rage) {
         super(nom, hp, attaque);
         this.rage = 0;
     }
 }
+
+// Mage
 class Mage extends Hero{
     constructor(nom, hp, attaque, mana) {
         super(nom, hp, attaque);
@@ -28,6 +32,7 @@ class Mage extends Hero{
     }
 }
 
+// Archer
 class Archer extends Hero{
     constructor(nom, hp, attaque, fleches) {
         super(nom, hp, attaque);
@@ -39,9 +44,15 @@ class Archer extends Hero{
 }
 
 // Déclarations héros du jour
-// let garen = new Guerrier ("Garen", 400, 50,0)
-// let lux = new Mage ("Lux", 200, 150)
-// let ashe = new Archer ("Ashe", 300, 100)
+let guerrier = new Guerrier
+let mage = new Mage
+let archer = new Archer
 
 import {bossATuer} from './boss.js'
 console.log(`Mais de l'autre notre côté, nous avons 3 champions tous excités de battre la TERREUR de Molengeek (${bossATuer.nom})`)
+
+// L'utilisateur doit donner un nom à chaque héros
+guerrier.nom = prompt("Donnez un nom à votre guerrier.")
+mage.nom = prompt("Donnez un nom à votre mage.")
+archer.nom = prompt("Donnez un nom à votre archer.")
+console.log(`Je vous présente notre fabuleuse équipe: le Guerrier ${guerrier.nom}, le mage ${mage.nom}, l'archer ${archer.nom}`)
