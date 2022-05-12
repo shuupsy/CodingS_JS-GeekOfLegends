@@ -35,6 +35,7 @@ class Guerrier extends Hero {
             this.hp *= 0.75;
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+            // Suppression des bonus
             this.rage = 0;
             this.atk /= 1.4;
             this.hp /= 0.75;
@@ -43,18 +44,22 @@ class Guerrier extends Hero {
             this.hp *= 0.75;
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
-            this.rage += 1;
-            console.log(`${this.nom} a gagné ${this.rage}pt(s) de rage.`);
+            console.log(`${this.nom} a gagné 1pt de rage. Rage : ${this.rage}`);
+            // Suppression des bonus ATK
             this.atk /= 1.4;
             this.hp /= 0.75;
+            // Gain 1 rage par tour
+            this.rage += 1;
         }
     }
     defendre() {
+        // Gain 1 rage par tour
         this.rage += 1;
         console.log(this.rage);
     }
     normal() {
         console.log(`${this.nom} passe son tour. Mais gagne 1pt de rage.`)
+        // Gain 1 rage par tour
         this.rage += 1;
     }
 }
@@ -78,6 +83,7 @@ class Mage extends Hero {
             this.hp *= 0.75;
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
+             // Suppression des bonus ATK
             this.atk /= 1.4;
             this.hp /= 0.75;
         }
@@ -93,22 +99,26 @@ class Archer extends Hero {
     }
     attaquer() {
         if (this.fleches < 2) {
+            // Flèches - rupture de stock
             this.normal();
             this.fleches += 6;
             console.log(`${this.nom} n'a plus de fleches, donc passe un tour et gagne ${fleches} flèches. Flèches : ${this.fleches}`);
         } else {
             this.fleches -= 2;
             console.log(`${this.nom} a utilisé 2 flèches pour attaquer. Flèches restantes: ${this.fleches}`);
-            this.fleches += 1;
             this.atk *= 1.4;
             this.hp *= 0.75;
-            bossATuer.hp -= this.atk;
+            bossATuer.hp -= this.atk; 
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
+             // Suppression des bonus ATK
             this.atk /= 1.4;
             this.hp /= 0.75;
+            // Gain 1 flèche par tour
+            this.fleches += 1;
         }
     }
     defendre() {
+        // Gain 1 flèche par tour
         this.fleches += 1;
     }
 }
