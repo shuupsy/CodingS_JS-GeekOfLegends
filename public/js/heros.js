@@ -4,17 +4,14 @@ import {
 
 // Propriétés communs à tous les héros
 class Hero {
-    constructor(nom, hp, atk) {
+    constructor(nom, hp, atk, def) {
         this.nom = nom;
         this.hp = hp;
         this.atk = atk;
+        this.def = 0;
     }
-    defendre() {
-        this.atk *= 0.5;
-        this.hp *= 2.5;
-        // +augmente les chances d'être attaqué par le boss
-    };
-    attaquer() {}
+    attaquer() {};
+    defendre() {};
     normal() {
         console.log(`${this.nom} passe son tour.`)
     }
@@ -60,7 +57,24 @@ class Guerrier extends Hero {
     defendre() {
         // Gain 1 rage par tour
         this.rage += 1;
-        console.log(this.rage);
+        if (this.def == 0) {
+            // Bonus défense pdt 1 tour
+            this.atk *= 0.5;
+            this.hp *= 2.5;
+            // Différence avant-après
+            let diffhp = 0.6 * this.hp;
+            let diffatk = -0.5 * this.atk;
+            console.log(`${this.nom} a préféré se défendre. Son HP a augmenté de ${diffhp} et son ATK a fait un bond de ${diffatk}`)
+            this.def = 1;
+        } else {
+            // Suppression bonus
+            this.hp += diffhp;
+            this.atk += diffatk;
+            // this.atk /= 0.5;
+            // this.hp /= 2.5;
+            this.def = 0;
+            console.log(this.def)
+        }
     }
     normal() {
         console.log(`${this.nom} passe son tour. Mais gagne 1pt de rage.`)
@@ -97,6 +111,26 @@ class Mage extends Hero {
             this.hp /= 0.75;
         }
     }
+    defendre() {
+        if (this.def == 0) {
+            // Bonus défense pdt 1 tour
+            console.log(this.def)
+            this.atk *= 0.5;
+            this.hp *= 2.5;
+            // Différence avant-après
+            let diffhp = 0.6 * this.hp;
+            let diffatk = -0.5 * this.atk;
+            console.log(`${this.nom} a préféré se défendre. Son HP a augmenté de ${diffhp} et son ATK a fait un bond de ${diffatk}`)
+            this.def = 1;
+        } else {
+            // Suppression bonus
+            this.hp += diffhp;
+            this.atk += diffatk;
+            // this.atk /= 0.5;
+            // this.hp /= 2.5;
+            this.def = 0;
+        }
+    }
 }
 
 // Archer
@@ -131,6 +165,29 @@ class Archer extends Hero {
     }
     defendre() {
         // Gain 1 flèche par tour
+        this.fleches += 1;
+        if (this.def == 0) {
+            // Bonus défense pdt 1 tour
+            console.log(this.def)
+            this.atk *= 0.5;
+            this.hp *= 2.5;
+            // Différence avant-après
+            let diffhp = 0.6 * this.hp;
+            let diffatk = -0.5 * this.atk;
+            console.log(`${this.nom} a préféré se défendre. Son HP a augmenté de ${diffhp} et son ATK a fait un bond de ${diffatk}`)
+            this.def = 1;
+        } else {
+            // Suppression bonus
+            this.hp += diffhp;
+            this.atk += diffatk;
+            // this.atk /= 0.5;
+            // this.hp /= 2.5;
+            this.def = 0;
+        }
+    };
+    normal() {
+        console.log(`${this.nom} passe son tour. Mais gagne 1 flèche supplémentaire.`)
+        // Gain 1 rage par tour
         this.fleches += 1;
     }
 }
