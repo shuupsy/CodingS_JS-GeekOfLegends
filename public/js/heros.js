@@ -15,16 +15,9 @@ class Hero {
         // +augmente les chances d'être attaqué par le boss
     };
     attaquer() {
-
-        // this.atk *= 1.4;
-        // this.hp *= 0.75;
-        // bossATuer.hp -= this.atk;
-        // alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
-        // this.atk /= 1.4;
-        // this.hp /=0.75
     }
     normal() {
-        console.log(`${this.name} passe son tour.`)
+        console.log(`${this.nom} passe son tour.`)
     }
 }
 
@@ -43,9 +36,17 @@ class Guerrier extends Hero {
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             this.rage = 0;
+            this.atk /= 1.4;
+            this.hp /= 0.75;
         } else {
+            this.atk *= 1.4;
+            this.hp *= 0.75;
+            bossATuer.hp -= this.atk;
+            alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             this.rage += 1;
             console.log(`${this.nom} a gagné ${this.rage}pt(s) de rage.`);
+            this.atk /= 1.4;
+            this.hp /= 0.75;
         }
     }
     defendre() {
@@ -53,6 +54,7 @@ class Guerrier extends Hero {
         console.log(this.rage);
     }
     normal() {
+        console.log(`${this.nom} passe son tour. Mais gagne 1pt de rage.`)
         this.rage += 1;
     }
 }
@@ -76,6 +78,8 @@ class Mage extends Hero {
             this.hp *= 0.75;
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
+            this.atk /= 1.4;
+            this.hp /= 0.75;
         }
     }
 }
@@ -91,15 +95,17 @@ class Archer extends Hero {
         if (this.fleches < 2) {
             this.normal();
             this.fleches += 6;
-            console.log(`${this.nom} n'a plus de fleches, donc passe un tour et gagne ${this.fleches} mana.`);
+            console.log(`${this.nom} n'a plus de fleches, donc passe un tour et gagne ${fleches} flèches. Flèches : ${this.fleches}`);
         } else {
             this.fleches -= 2;
-            console.log(`${this.nom} a utilisé 2 flèches pour attaquer`);
+            console.log(`${this.nom} a utilisé 2 flèches pour attaquer. Flèches restantes: ${this.fleches}`);
             this.fleches += 1;
             this.atk *= 1.4;
             this.hp *= 0.75;
             bossATuer.hp -= this.atk;
-            alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+            alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
+            this.atk /= 1.4;
+            this.hp /= 0.75;
         }
     }
     defendre() {

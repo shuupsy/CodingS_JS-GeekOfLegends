@@ -13,9 +13,9 @@ class Boss {
 }
 
 // Déclaration des boss du jour
-let nico = new Boss("Nico", 1000, 50)
-let kevin = new Boss("Kevin", 1500, 100)
-let kadri = new Boss("Kadri", 2000, 150)
+let nico = new Boss("Nico", 1500, 50)
+let kevin = new Boss("Kevin", 2000, 100)
+let kadri = new Boss("Kadri", 3000, 150)
 // Liste de tous les boss
 let boss = [nico, kevin, kadri]
 
