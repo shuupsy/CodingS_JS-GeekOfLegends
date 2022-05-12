@@ -46,7 +46,7 @@ class Guerrier extends Hero {
             this.hp *= 0.75;
             // Attaque le boss
             bossATuer.hp -= this.atk;
-            console.log(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+            console.log(`Le Guerrier attaque! Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             // Suppression des bonus ATK
             this.atk /= 1.4;
@@ -130,7 +130,7 @@ class Mage extends Hero {
             let diffatk = -0.5 * this.atk;
             this.hp -= diffhp;
             this.atk -= diffatk;
-            console.log(`Les HP et ATK de ${this.name} sont revenus à ${this.hp} et ${this.atk}`)
+            console.log(`Les HP et ATK de ${this.nom} sont revenus à ${this.hp} et ${this.atk}`)
             this.def = 0;
         }
     }
@@ -185,7 +185,7 @@ class Archer extends Hero {
             let diffatk = -0.5 * this.atk;
             this.hp -= diffhp;
             this.atk -= diffatk;
-            console.log(`Les HP et ATK de ${this.name} sont revenus à ${this.hp} et ${this.atk}`)
+            console.log(`Les HP et ATK de ${this.nom} sont revenus à ${this.hp} et ${this.atk}`)
             this.def = 0;
         }
     };
