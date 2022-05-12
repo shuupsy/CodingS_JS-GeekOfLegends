@@ -39,3 +39,36 @@ function tour() {
     }
 }
 tour()
+
+// Enigmes lorsque le boss a moins de 20% HP.
+function enigmes() {
+    let enigme1 = confirm("1 + 1 = 2");
+    if (enigme1 == true) {
+        enigme1 = 1;
+    } else {
+        enigme1 = 0;
+    }
+    let enigme2 = confirm("5² = 25");
+    if (enigme2 == true) {
+        enigme2 = 1;
+    } else {
+        enigme2 = 0;
+    }
+    let enigme3 = confirm("cos = adjacent / hypothenuse")
+    if (enigme3 == true) {
+        enigme3 = 1;
+    } else {
+        enigme3 = 0;
+    }
+    let resultat = enigme1 + enigme2 + enigme3;
+    switch (resultat) {
+        case 3:
+            bossATuer.hp = 0;
+            alert(`GG. Nos champions ont réussi à tuer ${bossATuer.nom}!!!`);
+            break;
+        default:
+            bossATuer.hp = 300;
+            tour()
+    }
+}
+enigmes()
