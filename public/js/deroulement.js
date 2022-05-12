@@ -14,8 +14,10 @@ import {
 function tour() {
     while (bossATuer.hp >= lowLife) {
         // Attaque du boss
-
-        // Choix des héros
+        let cible = heros[Math.floor(Math.random()* heros.length)];
+        cible.hp -= bossATuer.atk;
+        alert(`Le boss a décidé de taper ${cible.nom}. Celui-ci a maintenant ${cible.hp} HP.`)
+        // Choix des héros entre ATK/DEF/normal
         let t = 0
         for (t; t < heros.length; t++) {
             let choix = prompt(`Tu es ${heros[t].nom}. Choisis entre A (Attaquer) / D (Défendre) / Rien`).toUpperCase();

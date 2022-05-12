@@ -5,11 +5,6 @@ class Boss {
         this.hp = hp;
         this.attaque = attaque;
     }
-    vie() {
-        if (this.hp <= 0.2 * this.hp) {
-            enigme()
-        }
-    }
 }
 
 // Déclaration des boss du jour
