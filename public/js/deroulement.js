@@ -20,6 +20,7 @@ function tour() {
         let cible = heros[Math.floor(Math.random() * heros.length)];
         cible.hp -= bossATuer.atk;
         alert(`Le boss a décidé de taper ${cible.nom}. Celui-ci a donc maintenant ${cible.hp}HP.`);
+        console.log(`Le boss a décidé de taper ${cible.nom}. Celui-ci a donc maintenant ${cible.hp}HP.`);
         // Choix des héros entre ATK/DEF/normal
         let t = 0
         for (t; t < heros.length; t++) {

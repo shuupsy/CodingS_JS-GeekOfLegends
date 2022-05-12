@@ -34,6 +34,7 @@ class Guerrier extends Hero {
             // Attaque le boss
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+            console.log(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             // Suppression des bonus après la RAGE
             this.rage = 0;
             this.atk /= 1.4;
@@ -45,6 +46,7 @@ class Guerrier extends Hero {
             this.hp *= 0.75;
             // Attaque le boss
             bossATuer.hp -= this.atk;
+            console.log(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             // Suppression des bonus ATK
             this.atk /= 1.4;
@@ -68,12 +70,13 @@ class Guerrier extends Hero {
             this.def = 1;
         } else {
             // Suppression bonus
+            let diffhp = 0.6 * this.hp;
+            let diffatk = -0.5 * this.atk;
             this.hp += diffhp;
             this.atk += diffatk;
             // this.atk /= 0.5;
             // this.hp /= 2.5;
             this.def = 0;
-            console.log(this.def)
         }
     }
     normal() {
@@ -105,6 +108,7 @@ class Mage extends Hero {
             this.hp *= 0.75;
             // Attaque le boss
             bossATuer.hp -= this.atk;
+            console.log(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
             // Suppression des bonus ATK
             this.atk /= 1.4;
@@ -114,7 +118,6 @@ class Mage extends Hero {
     defendre() {
         if (this.def == 0) {
             // Bonus défense pdt 1 tour
-            console.log(this.def)
             this.atk *= 0.5;
             this.hp *= 2.5;
             // Différence avant-après
@@ -124,10 +127,10 @@ class Mage extends Hero {
             this.def = 1;
         } else {
             // Suppression bonus
+            let diffhp = 0.6 * this.hp;
+            let diffatk = -0.5 * this.atk;
             this.hp += diffhp;
             this.atk += diffatk;
-            // this.atk /= 0.5;
-            // this.hp /= 2.5;
             this.def = 0;
         }
     }
@@ -155,6 +158,7 @@ class Archer extends Hero {
             this.hp *= 0.75;
             // Attaque le boss
             bossATuer.hp -= this.atk;
+            console.log(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
             // Suppression des bonus ATK
             this.atk /= 1.4;
@@ -168,7 +172,6 @@ class Archer extends Hero {
         this.fleches += 1;
         if (this.def == 0) {
             // Bonus défense pdt 1 tour
-            console.log(this.def)
             this.atk *= 0.5;
             this.hp *= 2.5;
             // Différence avant-après
@@ -178,6 +181,8 @@ class Archer extends Hero {
             this.def = 1;
         } else {
             // Suppression bonus
+            let diffhp = 0.6 * this.hp;
+            let diffatk = -0.5 * this.atk;
             this.hp += diffhp;
             this.atk += diffatk;
             // this.atk /= 0.5;
