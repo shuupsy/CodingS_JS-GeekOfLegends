@@ -24,7 +24,7 @@ let bossATuer = boss[Math.floor(Math.random()* boss.length)];
 let lowLife = 0.2 * bossATuer.hp;
 
 // Message sur la mission
-console.log(`Le boss à tuer aujourd'hui est ${bossATuer.nom}. Ses caractéristiques sont : ${bossATuer.hp}HP et ${bossATuer.attaque}ATK. Bonne chance!`)
+alert(`Le boss à tuer aujourd'hui est ${bossATuer.nom}. Ses caractéristiques sont : ${bossATuer.hp}HP et ${bossATuer.attaque}ATK. Bonne chance!`)
 
 export {
     Boss,

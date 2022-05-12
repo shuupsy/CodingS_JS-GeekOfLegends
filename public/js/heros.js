@@ -15,12 +15,16 @@ class Hero {
         // +augmente les chances d'être attaqué par le boss
     };
     attaquer() {
-        this.atk *= 1.4;
-        this.hp *= 0.75;
-        bossATuer.hp -= this.atk;
-        alert(`Le boss ${bossATuer.name} a perdu ${this.atk}. Il lui reste ${bossATuer.hp}!`)
-        this.atk /= 1.4;
-        this.hp /=0.75
+
+        // this.atk *= 1.4;
+        // this.hp *= 0.75;
+        // bossATuer.hp -= this.atk;
+        // alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+        // this.atk /= 1.4;
+        // this.hp /=0.75
+    }
+    normal() {
+        console.log(`${this.name} passe son tour.`)
     }
 }
 
@@ -30,30 +34,80 @@ class Guerrier extends Hero {
         super(nom, hp, atk);
         this.rage = 0;
     }
+    attaquer() {
+        if (this.rage > 3) {
+            this.atk *= 1.25;
+            console.log(`${this.nom} est rentré en rage et possède des bonus d'attaque ce tour!`);
+            this.atk *= 1.4;
+            this.hp *= 0.75;
+            bossATuer.hp -= this.atk;
+            alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+            this.rage = 0;
+        } else {
+            this.rage += 1;
+            console.log(`${this.nom} a gagné ${this.rage}pt(s) de rage.`);
+        }
+    }
+    defendre() {
+        this.rage += 1;
+        console.log(this.rage);
+    }
+    normal() {
+        this.rage += 1;
+    }
 }
 
 // Mage
-let nbMana = [7,9,11];
+let nbMana = [7, 9, 11];
 class Mage extends Hero {
     constructor(nom, hp, atk, mana) {
         super(nom, hp, atk);
-        this.mana = nbMana[Math.floor(Math.random()* nbMana.length)];;
+        this.mana = nbMana[Math.floor(Math.random() * nbMana.length)];;
+    }
+    attaquer() {
+        if (this.mana < 2) {
+            this.normal();
+            this.mana += 7;
+            console.log(`${this.nom} n'a plus de mana, donc passe un tour et gagne ${this.mana} mana. Mana: ${this.mana}`);
+        } else {
+            this.mana -= 2;
+            console.log(`${this.nom} a utilisé 2 de mana pour attaquer. Mana restante : ${this.mana}`)
+            this.atk *= 1.4;
+            this.hp *= 0.75;
+            bossATuer.hp -= this.atk;
+            alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
+        }
     }
 }
 
 // Archer
-let nbFleches = [7,8,9,10,11];
+let nbFleches = [7, 8, 9, 10, 11];
 class Archer extends Hero {
     constructor(nom, hp, atk, fleches) {
         super(nom, hp, atk);
-        this.fleches = nbFleches[Math.floor(Math.random()* nbFleches.length)];
+        this.fleches = nbFleches[Math.floor(Math.random() * nbFleches.length)];
     }
-    nbrefleches() {
-
+    attaquer() {
+        if (this.fleches < 2) {
+            this.normal();
+            this.fleches += 6;
+            console.log(`${this.nom} n'a plus de fleches, donc passe un tour et gagne ${this.fleches} mana.`);
+        } else {
+            this.fleches -= 2;
+            console.log(`${this.nom} a utilisé 2 flèches pour attaquer`);
+            this.fleches += 1;
+            this.atk *= 1.4;
+            this.hp *= 0.75;
+            bossATuer.hp -= this.atk;
+            alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
+        }
+    }
+    defendre() {
+        this.fleches += 1;
     }
 }
 
-console.log(`Mais de l'autre notre côté, nous avons 3 champions tous excités de battre la TERREUR de Molengeek (${bossATuer.nom})`)
+alert(`Mais de l'autre notre côté, nous avons 3 champions tous excités de battre la TERREUR de Molengeek (${bossATuer.nom})`)
 
 // Déclarations héros du jour
 let guerrier = new Guerrier;
@@ -67,22 +121,22 @@ guerrier.nom = prompt("Donnez un nom à votre guerrier.")
 mage.nom = prompt("Donnez un nom à votre mage.")
 archer.nom = prompt("Donnez un nom à votre archer.")
 
-console.log(`Je vous présente notre fabuleuse équipe: ${guerrier.nom}, le Guerrier / ${mage.nom}, le Mage / ${archer.nom}, l'Archer.`),
+alert(`Je vous présente notre fabuleuse équipe: ${guerrier.nom}, le Guerrier / ${mage.nom}, le Mage / ${archer.nom}, l'Archer.`),
 
-// Distribution des HP et ATK entre chaque héros
-console.log(`Avant de lancer les hostilités, le public doit distribuer ses faveurs à chacun des Héros. Vous avez 500HP et 500ATK à répartir entre chaque Héros. VOTEZ.`)
+    // Distribution des HP et ATK entre chaque héros
+    alert(`Avant de lancer les hostilités, le public doit distribuer ses faveurs à chacun des Héros. Vous avez 500HP et 500ATK à répartir entre chaque Héros. VOTEZ.`)
 
 // Distribution HP
 // Pour le guerrier
 guerrier.hp = +prompt(`HP pour votre guerrier. Entre un chiffre en 100 et 300.`);
 while (guerrier.hp < 100 || guerrier.hp > 300) {
     guerrier.hp = +prompt("Attention, vous devez lui donner des HP entre 100 et 300 afin que les autres puissent taffer aussi !")
-} 
+}
 
 let r = 500 - guerrier.hp
 // Pour le mage
 mage.hp = +prompt(`HP pour votre mage. Il vous reste ${r}points à distribuer. (Le reste sera donné automatiquement à l'archer.)`)
-while(mage.hp >= r || mage.hp < 100) {
+while (mage.hp >= r || mage.hp < 100) {
     mage.hp = +prompt(`Donnez un chiffre entre 100 et ${r-100}, car l'archer doit au moins avoir 100HP.`)
 }
 // Pour l'archer
@@ -94,25 +148,31 @@ archer.hp = r - mage.hp
 guerrier.atk = +prompt(`MAINTENANT LES ATK ! Pour votre guerrier. Entre un chiffre en 100 et 300.`);
 while (guerrier.atk < 100 || guerrier.atk > 300) {
     guerrier.atk = +prompt("Attention, vous devez lui donner des HP entre 100 et 300 afin que les autres puissent taffer aussi !")
-} 
+}
 
 let r2 = 500 - guerrier.atk
 // Pour le mage
 mage.atk = +prompt(`ATK pour votre mage. Il vous reste ${r2}points à distribuer. (Le reste sera donné automatiquement à l'archer.)`)
-while(mage.atk >= r2 || mage.atk < 100) {
+while (mage.atk >= r2 || mage.atk < 100) {
     mage.atk = +prompt(`Donnez un chiffre entre 100 et ${r2-100}, car l'archer doit au moins avoir 100ATK.`)
 }
 // Pour l'archer
 archer.atk = r2 - mage.atk
 
-console.log("Quelle équipe! Voici le récap de nos héros :")
-let i=0
-for (i; i< heros.length; i++) {
+alert("Quelle équipe! Voici le récap de nos héros : (Regardez votre console)")
+
+let i = 0
+for (i; i < heros.length; i++) {
     console.table(heros[i])
 }
 
-console.log("======== !!! C'EST L'HEURE DU COMBAT !!! =========")
+alert("======== !!! C'EST L'HEURE DU COMBAT !!! =========")
 
 
 // Export pour déroulement
-export {guerrier, mage, archer, heros}
+export {
+    guerrier,
+    mage,
+    archer,
+    heros
+}
