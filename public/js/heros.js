@@ -14,8 +14,7 @@ class Hero {
         this.hp *= 2.5;
         // +augmente les chances d'être attaqué par le boss
     };
-    attaquer() {
-    }
+    attaquer() {}
     normal() {
         console.log(`${this.nom} passe son tour.`)
     }
@@ -93,7 +92,7 @@ class Mage extends Hero {
             // Attaque le boss
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
-             // Suppression des bonus ATK
+            // Suppression des bonus ATK
             this.atk /= 1.4;
             this.hp /= 0.75;
         }
@@ -121,9 +120,9 @@ class Archer extends Hero {
             this.atk *= 1.4;
             this.hp *= 0.75;
             // Attaque le boss
-            bossATuer.hp -= this.atk; 
+            bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
-             // Suppression des bonus ATK
+            // Suppression des bonus ATK
             this.atk /= 1.4;
             this.hp /= 0.75;
             // Gain 1 flèche par tour
@@ -144,6 +143,7 @@ let mage = new Mage;
 let archer = new Archer;
 
 let heros = [guerrier, mage, archer]
+
 
 // L'utilisateur doit donner un nom à chaque héros
 guerrier.nom = prompt("Donnez un nom à votre guerrier.")
@@ -194,6 +194,7 @@ let i = 0
 for (i; i < heros.length; i++) {
     console.table(heros[i])
 }
+
 
 alert("======== !!! C'EST L'HEURE DU COMBAT !!! =========")
 

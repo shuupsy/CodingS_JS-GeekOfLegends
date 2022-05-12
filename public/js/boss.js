@@ -1,9 +1,9 @@
 // Constructor Boss
 class Boss {
-    constructor(nom, hp, attaque) {
+    constructor(nom, hp, atk) {
         this.nom = nom;
         this.hp = hp;
-        this.attaque = attaque;
+        this.atk = atk;
     }
 }
 

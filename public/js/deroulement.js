@@ -1,6 +1,9 @@
 import {
     bossATuer,
     lowLife,
+    nico,
+    kevin,
+    kadri
 } from './boss.js'
 
 import {
@@ -14,9 +17,9 @@ import {
 function tour() {
     while (bossATuer.hp >= lowLife) {
         // Attaque du boss
-        let cible = heros[Math.floor(Math.random()* heros.length)];
+        let cible = heros[Math.floor(Math.random() * heros.length)];
         cible.hp -= bossATuer.atk;
-        alert(`Le boss a décidé de taper ${cible.nom}. Celui-ci a maintenant ${cible.hp} HP.`)
+        alert(`Le boss a décidé de taper ${cible.nom}. Celui-ci a donc maintenant ${cible.hp}HP.`);
         // Choix des héros entre ATK/DEF/normal
         let t = 0
         for (t; t < heros.length; t++) {
