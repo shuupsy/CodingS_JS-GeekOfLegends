@@ -29,26 +29,32 @@ class Guerrier extends Hero {
     }
     attaquer() {
         if (this.rage > 3) {
+            // Rage mode
             this.atk *= 1.25;
             console.log(`${this.nom} est rentré en rage et possède des bonus d'attaque ce tour!`);
+            // Bonus mode ATK
             this.atk *= 1.4;
             this.hp *= 0.75;
+            // Attaque le boss
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
-            // Suppression des bonus
+            // Suppression des bonus après la RAGE
             this.rage = 0;
             this.atk /= 1.4;
             this.hp /= 0.75;
         } else {
+            // No rage mode
+            // Bonus mode ATK
             this.atk *= 1.4;
             this.hp *= 0.75;
+            // Attaque le boss
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`)
-            console.log(`${this.nom} a gagné 1pt de rage. Rage : ${this.rage}`);
             // Suppression des bonus ATK
             this.atk /= 1.4;
             this.hp /= 0.75;
             // Gain 1 rage par tour
+            console.log(`${this.nom} a gagné 1pt de rage. Rage : ${this.rage}`);
             this.rage += 1;
         }
     }
@@ -73,14 +79,18 @@ class Mage extends Hero {
     }
     attaquer() {
         if (this.mana < 2) {
+            // Mana - Rupture de stock
             this.normal();
             this.mana += 7;
             console.log(`${this.nom} n'a plus de mana, donc passe un tour et gagne ${this.mana} mana. Mana: ${this.mana}`);
         } else {
+            // Quantité mana suffisante
             this.mana -= 2;
             console.log(`${this.nom} a utilisé 2 de mana pour attaquer. Mana restante : ${this.mana}`)
+            // Bonus mode ATK
             this.atk *= 1.4;
             this.hp *= 0.75;
+            // Attaque le boss
             bossATuer.hp -= this.atk;
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
              // Suppression des bonus ATK
@@ -104,10 +114,13 @@ class Archer extends Hero {
             this.fleches += 6;
             console.log(`${this.nom} n'a plus de fleches, donc passe un tour et gagne ${fleches} flèches. Flèches : ${this.fleches}`);
         } else {
+            // Quantité de flèches suffisante
             this.fleches -= 2;
             console.log(`${this.nom} a utilisé 2 flèches pour attaquer. Flèches restantes: ${this.fleches}`);
+            // Bonus mode ATK
             this.atk *= 1.4;
             this.hp *= 0.75;
+            // Attaque le boss
             bossATuer.hp -= this.atk; 
             alert(`Le boss ${bossATuer.nom} a perdu ${this.atk}HP. Il lui reste ${bossATuer.hp}!`);
              // Suppression des bonus ATK
